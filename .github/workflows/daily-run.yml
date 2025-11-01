@@ -1,0 +1,26 @@
+name: Daily ClassNowX Run
+
+on:
+  schedule:
+    - cron: '0 5 * * *'  # Runs daily at 6:00 AM BST (5:00 AM UTC)
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install pandas selenium python-dotenv
+
+      - name: Run script
+        run: python app.py
+
