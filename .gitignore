@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg
+*.egg-info/
+dist/
+build/
+*.log
+
+# Virtual environment
+venv/
+
+# macOS
+.DS_Store
+
+# Environment variables
+.env
+
+# CSV or output files
+csv/
+log.txt
+last_run.txt
