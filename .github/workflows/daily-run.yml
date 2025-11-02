@@ -1,6 +1,7 @@
 name: Daily ClassNowX Run
 
 on:
+  workflow_dispatch:  # 👈 allows manual trigger from GitHub
   schedule:
     - cron: '0 5 * * *'  # Runs daily at 6:00 AM BST (5:00 AM UTC)
 
