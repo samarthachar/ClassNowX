@@ -9,6 +9,23 @@ import os
 
 # load_dotenv()
 
+def format_date_readably(date_str):
+    """
+    Converts a date string in 'DD/MM/YYYY' format to 'Weekday the DayWithOrdinal'
+    Example: '24/12/2024' → 'Tuesday the 24th'
+    """
+    try:
+        date_obj = datetime.strptime(date_str, "%d/%m/%Y")
+        weekday = date_obj.strftime("%A")
+        day = date_obj.day
+
+        def ordinal(n):
+            return f"{n}{'th' if 11 <= n <= 13 else {1:'st', 2:'nd', 3:'rd'}.get(n % 10, 'th')}"
+
+        return f"{weekday} the {ordinal(day)}"
+    except ValueError:
+        return "Invalid date format. Please use 'DD/MM/YYYY'."
+
 def holiday():
 
     exit()
@@ -41,7 +58,7 @@ elif len(homework) <= 7:
 message += "The homework pending for this week is:\n"
 
 for work in homework:
-    message += f"• {work['title']} ({work['due_Date']}) - Set by {work['teacher']} for {work['subject']}\n"
+    message += f"• {work['title']} ({format_date_readably(work['due_Date'])}) - Set by {work['teacher']} for {work['subject']}\n"
 
 message += "\n - The ClassNowX Team"
 
