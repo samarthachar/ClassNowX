@@ -19,14 +19,14 @@ PASSWORD = os.getenv("PASSWORD")
 
 class BromComScraper:
     def __init__(self):
-        self.driver = webdriver.Chrome()
-    def login(self):
         options = Options()
         options.add_argument("--headless")
         options.add_argument("--no-sandbox")
         options.add_argument("--disable-dev-shm-usage")
 
         self.driver = webdriver.Chrome(options=options)
+    def login(self):
+        self.driver.get("https://www.bromcomvle.com/")
         time.sleep(5)
 
         school_id_field = self.driver.find_element(By.ID, "schoolid")
