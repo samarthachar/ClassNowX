@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 import os
 
 
-load_dotenv()
+# load_dotenv()
 
 def holiday():
 
@@ -32,8 +32,7 @@ Hello {name.split()[0]}!
 Today's timetable is:\n
 """
 for period in schedule:
-    message += f"{period["period"]}) {period["subject"]} in {period["room"]}\n"
-
+    message += f"{period['period']}) {period['subject']} in {period['room']}\n"
 if len(homework) > 7:
     message += f"\nHere is your home learning for the week. Remember, you have Sparx too. You have a lot of home learning this week, {name.split()[0]}... Good Luck!"
 elif len(homework) <= 7:
@@ -42,7 +41,7 @@ elif len(homework) <= 7:
 message += "The homework pending for this week is:\n"
 
 for work in homework:
-    message += f"• {work["title"]} ({work["due_Date"]}) - Set by {work["teacher"]} for {work["subject"]}\n"
+    message += f"• {work['title']} ({work['due_Date']}) - Set by {work['teacher']} for {work['subject']}\n"
 
 message += "\n - The ClassNowX Team"
 
