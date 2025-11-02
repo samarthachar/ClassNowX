@@ -23,5 +23,10 @@ jobs:
           pip install pandas selenium python-dotenv
 
       - name: Run script
+        env:
+          SCHOOL_ID: ${{ secrets.SCHOOL_ID }}
+          USERNAME: ${{ secrets.USERNAME }}
+          PASSWORD: ${{ secrets.PASSWORD }}
         run: python app.py
+
 
