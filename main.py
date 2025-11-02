@@ -6,6 +6,8 @@ from selenium import webdriver
 import os
 from dotenv import load_dotenv
 import time
+
+from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -19,7 +21,12 @@ class BromComScraper:
     def __init__(self):
         self.driver = webdriver.Chrome()
     def login(self):
-        self.driver.get("https://www.bromcomvle.com/")
+        options = Options()
+        options.add_argument("--headless")
+        options.add_argument("--no-sandbox")
+        options.add_argument("--disable-dev-shm-usage")
+
+        self.driver = webdriver.Chrome(options=options)
         time.sleep(5)
 
         school_id_field = self.driver.find_element(By.ID, "schoolid")
