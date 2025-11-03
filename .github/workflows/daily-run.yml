@@ -27,6 +27,9 @@ jobs:
           SCHOOL_ID: ${{ secrets.SCHOOL_ID }}
           USERNAME: ${{ secrets.USERNAME }}
           PASSWORD: ${{ secrets.PASSWORD }}
+          SENDER: ${{ secrets.SENDER }}
+          RECEIVER: ${{ secrets.RECEIVER }}
+          SENDER_PASSWORD: ${{ secrets.SENDER_PASSWORD }}
         run: python app.py
 
 
