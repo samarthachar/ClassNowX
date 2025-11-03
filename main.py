@@ -6,7 +6,6 @@ from selenium import webdriver
 import os
 from dotenv import load_dotenv
 import time
-
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -23,6 +22,7 @@ class BromComScraper:
         options.add_argument("--headless")
         options.add_argument("--no-sandbox")
         options.add_argument("--disable-dev-shm-usage")
+        options.add_argument("--window-size=1920,1080")
 
         self.driver = webdriver.Chrome(options=options)
     def login(self):
@@ -45,15 +45,20 @@ class BromComScraper:
 
     def get_timetable(self):
 
-        wait = WebDriverWait(self.driver, 5)
+        time.sleep(5)
+        wait = WebDriverWait(self.driver, 10)
+
+        wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, 'a[data-menuname="Timetable"]')))
         timetable_button = self.driver.find_element(By.CSS_SELECTOR, 'a[data-menuname="Timetable"]')
         timetable_button.click()
-        time.sleep(5)
 
+        wait.until(EC.element_to_be_clickable((By.ID, "ButtonToday")))
         this_week_button = self.driver.find_element(By.ID, "ButtonToday")
         this_week_button.click()
+
         time.sleep(5)
 
+        wait.until(EC.presence_of_element_located((By.ID, "Timetable")))
         table = self.driver.find_element(By.ID, "Timetable")
         thead = table.find_element(By.TAG_NAME, "thead")
         headers = thead.find_elements(By.TAG_NAME, "th")
@@ -111,10 +116,13 @@ class BromComScraper:
 
     def get_homework(self):
         wait = WebDriverWait(self.driver, 5)
-        homework_button = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, 'a[data-menuname="Homework"]')))
+        wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, 'a[data-menuname="Homework"]')))
+        homework_button = self.driver.find_element(By.CSS_SELECTOR, 'a[data-menuname="Homework"]')
         homework_button.click()
+
         time.sleep(5)
 
+        wait.until(EC.presence_of_element_located((By.ID, "HomeworkTable")))
         table = self.driver.find_element(By.ID, "HomeworkTable")
         rows = table.find_elements(By.TAG_NAME, "tr")
 
