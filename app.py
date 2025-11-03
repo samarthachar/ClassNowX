@@ -44,16 +44,16 @@ def get_today_schedule():
 
 schedule = get_today_schedule()
 message = f"""
-Hello {name.split()[0]}!
+Hello {name.split()}!
 
 Today's timetable is:\n
 """
 for period in schedule:
     message += f"{period['period']}) {period['subject']} in {period['room']}\n"
 if len(homework) > 7:
-    message += f"\nHere is your home learning for the week. Remember, you have Sparx too. You have a lot of home learning this week, {name.split()[0]}... Good Luck!"
+    message += f"\nHere is your home learning for the week. Remember, you have Sparx too. You have a lot of home learning this week, {name.split()}... Good Luck!"
 elif len(homework) <= 7:
-    message += f"\nHere is your home learning for the week. Remember, you have Sparx too. You only have {len(homework)} pieces of homework, {name.split()[0]}... It's easy this week!\n"
+    message += f"\nHere is your home learning for the week. Remember, you have Sparx too. You only have {len(homework)} pieces of homework, {name.split()}... It's easy this week!\n"
 
 message += "The homework pending for this week is:\n"
 
