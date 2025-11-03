@@ -69,6 +69,9 @@ password = os.getenv("SENDER_PASSWORD")
 subject = "Your daily Snapshot"
 body = message
 
+print(sender)
+print(receiver)
+print(password)
 
 
 msg = EmailMessage()
