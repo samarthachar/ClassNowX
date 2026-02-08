@@ -63,9 +63,9 @@ message += "\n - The ClassNowX Team"
 
 
 
-sender = os.getenv("SENDER")
-receiver = os.getenv("RECEIVER")
-password = os.getenv("SENDER_PASSWORD")
+sender = os.environ["SENDER"]
+receiver  = os.environ["RECEIVER"]
+password = os.environ["SENDER_PASSWORD"]
 subject = "Your daily Snapshot"
 body = message
 
